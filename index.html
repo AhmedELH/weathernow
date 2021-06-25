@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/Styles.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <title>Weather Now</title>
+    <script>
+        function Refresh() {
+            window.parent.location = window.parent.location.href;
+        }
+    </script>
+</head>
+<body>
+    
+    <button type="button" class="btn animate__animated animate__pulse" onclick="Refresh()" >
+        Weather Now
+    </button>
+
+<div class="content animate__animated animate__zoomInDown">
+    <div class="location">
+        <h2 class="location-timezone">Timezone</h2>
+        <canvas class="icon" width="128" height="128"></canvas>
+    </div>
+    <div class="temperature">
+        <div class="degree-section">
+            <h3 class="temperature-degree">34</h3>
+            <span class="temperature-unit">C</span>
+        </div>
+        <div class="temperature-description animate__animated animate__wobble"></div>
+    </div>
+</div>
+
+
+<script src="skycons.js "></script>
+    <script src="app.js"></script>
+</body>
+</html>
