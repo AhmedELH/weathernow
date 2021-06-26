@@ -26,6 +26,7 @@ window.addEventListener('load', () => {
 
                     const { temp } = data.main;
                     const { description, icon } = data.weather[0];
+                    console.log(data); 
 
 
                     //Set DOM elements
@@ -63,23 +64,24 @@ window.addEventListener('load', () => {
         const skycons = new Skycons({ color: "white" });
         let checkIcon = icon;
         let currentIcon;
-        if ((checkIcon = "01d") || (checkIcon = "01n")) {
+        console.log(icon);
+        if ((checkIcon == "01d") || (checkIcon == "01n")) {
             currentIcon = "CLEAR_DAY";
-        } else if ((checkIcon = "02d") || (checkIcon = "02n")) {
+        } else if ((checkIcon == "02d") || (checkIcon == "02n")) {
             currentIcon = "PARTLY_CLOUDY_DAY";
-        } else if ((checkIcon = "03d") || (checkIcon = "03n")) {
+        } else if ((checkIcon == "03d") || (checkIcon == "03n")) {
             currentIcon = "CLOUDY";
-        } else if ((checkIcon = "04d") || (checkIcon = "04n")) {
+        } else if ((checkIcon == "04d") || (checkIcon == "04n")) {
             currentIcon = "CLOUDY";
-        } else if (checkIcon = "09d") {
+        } else if (checkIcon == "09d") {
             currentIcon = "RAIN";
-        } else if (checkIcon = "10d") {
+        } else if (checkIcon == "10d") {
             currentIcon = "RAIN";
-        } else if (checkIcon = "11d") {
+        } else if (checkIcon == "11d") {
             currentIcon = "SLEET";
-        } else if (checkIcon = "13d") {
+        } else if (checkIcon == "13d") {
             currentIcon = "SNOW";
-        } else if (checkIcon = "50d") {
+        } else if (checkIcon == "50d") {
             currentIcon = "FOG";
         }
         skycons.play();
