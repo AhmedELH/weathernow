@@ -5,7 +5,11 @@ window.addEventListener('load', () => {
     let temperatureDegree = document.querySelector('.temperature-degree');
     let locationTimezone = document.querySelector('.location-timezone');
     let temperatureSection = document.querySelector('.temperature');
-    const temperatureSpan = document.querySelector('.temperature span')
+    const temperatureSpan = document.querySelector('.temperature span');
+    const cloudsVisible = document.querySelector('.clouds');
+    const humidityLevel = document.querySelector('.humidity');
+    const pressureLevel = document.querySelector('.pressure');
+    let locationSpecific = document.querySelector('.location-specific');
 
 
     const myKey = "9fd7e84f84626f28199be3bc384da8f9"
@@ -16,7 +20,9 @@ window.addEventListener('load', () => {
             long = position.coords.longitude;
             lat = position.coords.latitude;
 
-            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${myKey}`;
+            const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=hourly,minutely&units=metric&appid=${myKey}`;
+            const apix = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&exclude=hourly,minutely&units=metric&appid=${myKey}`;
+
 
             fetch(api)
                 .then(response => {
@@ -24,18 +30,27 @@ window.addEventListener('load', () => {
                 })
                 .then(data => {
 
-                    const { temp } = data.main;
-                    const { description, icon } = data.weather[0];
+                   
                     console.log(data); 
-
+                    const { temp, clouds, humidity, pressure } = data.current;
+                    const { description, icon } = data.current.weather[0];
 
                     //Set DOM elements
                     temperatureDegree.textContent = temp;
                     temperatureDescription.textContent = description;
-                    locationTimezone.textContent = data.name;
+                    locationTimezone.textContent = data.timezone;
+                    cloudsVisible.textContent = clouds + "%";
+                    humidityLevel.textContent = humidity;
+                    pressureLevel.textContent = pressure;
 
                     //Set icon
                     setIcons(icon, document.querySelector('.icon'));
+                    setIcons("03d", document.querySelector('.icon__cloud'));
+                    setIcons("50d", document.querySelector('.icon__pressure'));
+                    setIcons("09d", document.querySelector('.icon__humidity'));
+
+
+                    
 
                     //Celsius to Farenheit
 
@@ -56,6 +71,15 @@ window.addEventListener('load', () => {
 
 
                 });
+
+                fetch(apix)
+                .then(response => {
+                    return response.json();
+                })
+                .then(datax => {
+                    console.log(datax);
+                    locationSpecific.textContent = datax.name;
+                })
         });
 
     }

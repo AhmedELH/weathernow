@@ -5,10 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="CSS/Styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,700&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title>Weather Now</title>
   </head>
   <body>
@@ -19,10 +26,14 @@
     >
       Weather Now
     </button>
-
     <div class="content animate__animated animate__zoomInDown">
       <div class="location">
-        <h2 class="location-timezone">Loading..</h2>
+        <div class="title">
+          <h2 class="location-specific">Loading..</h2>
+          <h3 class="location-timezone">
+            Please allow access to your location.
+          </h3>
+        </div>
         <canvas class="icon" width="128" height="128"></canvas>
       </div>
       <div class="temperature">
@@ -36,12 +47,40 @@
       </div>
     </div>
 
+    <div class="content-grid">
+      <div class="content__small" data-aos="flip-left">
+        <div class="clouds-section">
+          <h2>Clouds</h2>
+          <h2 class="clouds"></h2>
+          <canvas class="icon__cloud" width="128" height="128"></canvas>
+        </div>
+      </div>
+      <div class="content__small" data-aos="flip-left">
+        <div class="clouds-section">
+          <h2>Humidity</h2>
+          <h2 class="humidity"></h2>
+          <canvas class="icon__humidity" width="128" height="128"></canvas>
+        </div>
+      </div>
+      <div class="content__small" data-aos="flip-left">
+        <div class="clouds-section">
+          <h2>Pressure</h2>
+          <h2 class="pressure"></h2>
+          <canvas class="icon__pressure" width="128" height="128"></canvas>
+        </div>
+      </div>
+    </div>
+
     <script src="skycons.js "></script>
     <script src="app.js"></script>
     <script>
       function Refresh() {
         window.parent.location = window.parent.location.href;
       }
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
     </script>
   </body>
 </html>
