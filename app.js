@@ -31,7 +31,7 @@ window.addEventListener('load', () => {
                 .then(data => {
 
                    
-                    console.log(data); 
+                    
                     const { temp, clouds, humidity, pressure } = data.current;
                     const { description, icon } = data.current.weather[0];
 
@@ -77,7 +77,7 @@ window.addEventListener('load', () => {
                     return response.json();
                 })
                 .then(datax => {
-                    console.log(datax);
+                   
                     locationSpecific.textContent = datax.name;
                 })
         });
@@ -88,7 +88,7 @@ window.addEventListener('load', () => {
         const skycons = new Skycons({ color: "white" });
         let checkIcon = icon;
         let currentIcon;
-        console.log(icon);
+        
         if ((checkIcon == "01d") || (checkIcon == "01n")) {
             currentIcon = "CLEAR_DAY";
         } else if ((checkIcon == "02d") || (checkIcon == "02n")) {
