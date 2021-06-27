@@ -90,7 +90,7 @@ body {
 }
 
 .content {
-  width: 50vw;
+  width: 6gi0vw;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -248,7 +248,7 @@ body {
   }
 
   .icon {
-    padding: 30px;
+    padding: 70px 30px 30px 30px;
 
     width: 10rem;
     align-self: center;
